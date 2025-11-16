@@ -1,0 +1,22 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build test",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "--std=c++23",
+                "${workspaceFolder}/test/test.cpp",
+                "-o",
+                "test.exe",
+                "-I", "./include/sort_kd_tree"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+    ]
+}
