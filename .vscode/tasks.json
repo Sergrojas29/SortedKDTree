@@ -10,6 +10,7 @@
                 "--std=c++23",
                 "${workspaceFolder}/test/test.cpp",
                 "${workspaceFolder}/src/sorted_kdtree.cpp",
+                "${workspaceFolder}/src/distance.cpp",
                 "-o",
                 "test.exe",
                 "-I", "./include"

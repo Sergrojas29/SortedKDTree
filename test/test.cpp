@@ -10,17 +10,29 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
     std::vector<std::array<float, 2>> myVector = {
-        {12, 63},
-        {88, 80},
-        {40, 60},
-        {60, 36},
-        {51, 45},
-        {53, 91}};
+        {12, 63}, // A 
+        {88, 80}, // B
+        {40, 60}, // C
+        {60, 36}, // D
+        {51, 45}, // E
+        {53, 91}  // F
+    };
 
     sortedkdtree::sortedKDTree tree(2);
 
+    
+    
     tree.insertSort(myVector);
-
+    
+    
+    std::optional<sortedkdtree::Point> nearestPoint1 = tree.findNearestNeighbor({16,59});
+    std::cout << nearestPoint1.value()[0] << ", " << nearestPoint1.value()[1] << "\n";
+    std::optional<sortedkdtree::Point> nearestPoint2 = tree.findNearestNeighbor({76,85});
+    std::cout << nearestPoint2.value()[0] << ", " << nearestPoint2.value()[1] << "\n";
+    std::optional<sortedkdtree::Point> nearestPoint3 = tree.findNearestNeighbor({45,66});
+    std::cout << nearestPoint3.value()[0] << ", " << nearestPoint3.value()[1] << "\n";
+    std::optional<sortedkdtree::Point> nearestPoint4 = tree.findNearestNeighbor({40,60});
+    std::cout << nearestPoint4.value()[0] << ", " << nearestPoint4.value()[1] << "\n";
 
 
 

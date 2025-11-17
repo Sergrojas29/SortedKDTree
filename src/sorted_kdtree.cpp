@@ -14,6 +14,7 @@ namespace sortedkdtree
         if (SIZE == 1)
         {
             current->point = PointSpan[0];
+            current->isLeaf = true;
             return;
         }
 
@@ -34,5 +35,10 @@ namespace sortedkdtree
         recursiveInsertSort(current->left, leftSpan, depth + 1);
         recursiveInsertSort(current->right, rightSpan, depth + 1);
     }
+
+
+
+
+
 
 } // namespace sortedkdtree

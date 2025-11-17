@@ -6,6 +6,7 @@
 #include <span>
 #include <iostream>
 #include <algorithm>
+#include <optional>
 namespace sortedkdtree{
 
     
@@ -18,7 +19,8 @@ namespace sortedkdtree{
         Point point;
         std::unique_ptr<Node> left;
         std::unique_ptr<Node> right;
-        explicit Node():left(nullptr), right(nullptr){}
+        bool isLeaf;
+        explicit Node():left(nullptr), right(nullptr), isLeaf(false){}
     };
     
     using NodePtr = std::unique_ptr<Node> ;
