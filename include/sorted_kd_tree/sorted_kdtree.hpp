@@ -3,7 +3,7 @@
 namespace sortedkdtree
 {
 
-    class sorted_kdtree
+    class sortedKDTree
     {
     private:
         NodePtr Root;
@@ -11,11 +11,16 @@ namespace sortedkdtree
         int depth_;
 
     public:
-        sorted_kdtree(int dimension): Root(nullptr), Dimension_(dimension), depth_(0){};
+        sortedKDTree(int dimension): Root(nullptr), Dimension_(dimension), depth_(0){};
+        ~sortedKDTree() {};
 
-        ~sorted_kdtree() {};
+        void insertSort(PointVec PointVec){
+            std::span<Point> pointSpan(PointVec);
+            recursiveInsertSort(Root, pointSpan, 0);
+        };
 
-        void insert();
+    private:
+        void recursiveInsertSort(NodePtr& current, std::span<Point>& PointSpan , int depth);
     };
 
-}// kdtree
+}// namespace sortedkdtree
