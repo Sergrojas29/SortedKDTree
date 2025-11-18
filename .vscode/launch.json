@@ -12,7 +12,7 @@
             "miDebuggerPath": "gdb",
             "args": [],
             "cwd": "${workspaceFolder}",
-            "stopAtEntry": true,
+            "stopAtEntry": false,
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
