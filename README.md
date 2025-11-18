@@ -67,7 +67,7 @@ Designed for:
 ├─ /src                      # Source code
 │   ├─ kdtree2d.cpp
 │   ├─ kdtree3d.cpp
-│   ├─ graph_nn.cpp
+│   ├─ graph_nn.cpp          # Future Implenation 
 │   └─ ...
 │
 ├─ /include                  # Public headers (DLL API exposure)
@@ -81,10 +81,10 @@ Designed for:
 │   ├─ test_kdtree3d.cpp
 │   └─ test_graph.cpp
 │
-└─ /assets                   # Graphics / diagrams / logos (Placeholder)
+└─ /assets                   # Graphics / diagrams / logos
 ```
 
-> **TODO:** Insert architecture diagrams, visual KD-Tree splitting demo, nearest neighbor graph illustration.
+> **TODO:** Insert architecture diagrams, visual KD-Tree splitting demo, nearest neighbor graph illustration(get from old school project).
 
 ---
 
@@ -124,8 +124,8 @@ auto graph = NNGraph(points);
 ## **Summary Tables**
 | Component | Dimensionality | Purpose | Complexity |
 |----------|----------------|---------|------------|
-| KDTree2D | 2D Points      | Spatial queries | O(log n) avg |
-| KDTree3D | 3D Points      | Point cloud / geometry | O(log n) avg |
+| Sorted KDTree 2D | 2D Points      | Spatial queries | O(N log² N) |
+| Sorted KDTree3D | 3D Points      | Point cloud / geometry | O(N log² N) |
 | NNGraph  | Any dim        | Nearest-neighbor directional edges | Build: O(n log n) |
 
 ---
@@ -133,12 +133,40 @@ auto graph = NNGraph(points);
 ## **Testing**
 Run full test suite:
 ```
-ctest
+1. Basic Grid Case: 
+4 ,4 == 4, 4
+PASSED !!
+2. Single Point Tree: 
+10 ,20 == 10, 20
+PASSED !!
+3. Coincident Target: 
+5 ,5 == 5, 5
+PASSED !!
+4. Collinear Points (Vertical): 
+5 ,2 == 5, 2
+PASSED !!
+5. Simple test: 
+8 ,7 == 8, 7
+PASSED !!
+6. Duplicate Points:
+5 ,5 == 5, 5
+PASSED !!
+7. Large Coordinates:
+200 ,100 == 200, 100
+PASSED !!
+8. Different Quadrants:
+1 ,1 == 1, 1
+PASSED !!
+9. Deeply Nested Nearest:
+52 ,51 == 52, 51
+PASSED !!
+10. Horizontal Split Edge Case:
+1 ,5 == 1, 5
+PASSED !!
 ```
 
 All tests are located in `/tests` directory.
 
----
 
 ## **Performance Notes**
 - Balanced construction recommended for optimal lookup
@@ -167,14 +195,10 @@ This library is intended to serve as the computational backend for a future **de
 ---
 
 ## **License**
-TBD
+MIT
 
----
 
-### **Credits & Acknowledgements**
-- Inspired by prior academic work and spatial data structure research.
 
----
 
-> *End of README Placeholder — Ready for refinement and branding integration.*
+
 
