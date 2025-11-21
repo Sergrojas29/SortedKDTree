@@ -10,10 +10,33 @@
                 "--std=c++23",
                 "${workspaceFolder}/test/test.cpp",
                 "${workspaceFolder}/src/sorted_kdtree.cpp",
-                "${workspaceFolder}/src/distance.cpp",
                 "-o",
                 "test.exe",
-                "-I", "./include"
+                "-I",
+                "./include"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "build server",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "--std=c++23",
+                // Define Windows target version for httplib compatibility
+                "-D_WIN32_WINNT=0x0A00",
+                "${workspaceFolder}/test/servertest.cpp",
+                "${workspaceFolder}/src/sorted_kdtree.cpp",
+                "-o",
+                "test.exe",
+                "-I",
+                "./include",
+                // FIX: Add the Winsock library for networking functions (setsockopt, bind, etc.)
+                "-lws2_32"
             ],
             "group": "build",
             "problemMatcher": [

@@ -1,5 +1,6 @@
-#include <iostream>
 #include "sorted_kd_tree/sorted_kdtree.hpp"
+#include "./json/json.hpp"
+#include <iostream>
 
 struct scenario
 {
@@ -81,7 +82,7 @@ void testKdtree(const scenario &test)
 
     auto nearest = tree.findNearestNeighbor(test.target);
 
-    std::cout << nearest[0] << " ," << nearest[1] << " == " << test.expectedNearest[0] << ", "<< test.expectedNearest[1] << "\n";
+    std::cout << nearest[0] << " ," << nearest[1] << " == " << test.expectedNearest[0] << ", " << test.expectedNearest[1] << "\n";
     if (nearest == test.expectedNearest)
         std::cout << "\033[1;32mPASSED !!\033[0m\n";
     else
@@ -102,3 +103,5 @@ int main(int argc, char const *argv[])
     testKdtree(scenario10);
     return 0;
 }
+
+

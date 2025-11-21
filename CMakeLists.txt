@@ -25,11 +25,11 @@ target_include_directories(test PRIVATE sorted_kdtree)
 # Note: Your build is using MSVC, not MinGW, so the MINGW block
 # won't run, which is correct for this build.
 if (MINGW)
-    target_link_libraries(basic_usage PRIVATE stdc++exp)
+    target_link_libraries(test PRIVATE stdc++exp)
 endif()
 
 if(MSVC)
-    target_compile_options(basic_usage PRIVATE /W4)
+    target_compile_options(test PRIVATE /W4)
 else()
-    target_compile_options(basic_usage PRIVATE -Wall -Wextra -Wpedantic)
+    target_compile_options(test PRIVATE -Wall -Wextra -Wpedantic)
 endif()
