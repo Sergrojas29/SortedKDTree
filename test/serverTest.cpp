@@ -29,7 +29,17 @@ int main()
                    res.set_content(p_out.dump(4), "application/json"); });
 
     std::cout << "Server listening on http://localhost:8080" << std::endl;
+    
+
+    server.Post("/", [&](const httplib::Request &req, httplib::Response &res){
+        std::cout << req.body << std::endl;
+    });
+
+
+    
     server.listen("localhost", 8080);
+
+
 
     return 0;
 }
